@@ -61,7 +61,7 @@ dt <- data.frame(cbind(id = 1:nrow(weather_df),
 
 r_sqr <- NULL
 log_beta01 <- NULL
-for (i in 1:5000){
+for (i in 1:5000) {
   set.seed(i + 2021)
   
   boot_dt <- dt[sample(dt$id, replace = TRUE), ]
@@ -81,7 +81,7 @@ hist(r_sqr)
 hist(log_beta01)
 
 #CI
-param1_CI <- quantile(r_sqr, probs= c(0.025,0.975))
+param1_CI <- quantile(r_sqr, probs = c(0.025,0.975))
 param1_CI
 param2_CI <- quantile(log_beta01, probs = c(0.025,0.975))
 param2_CI
