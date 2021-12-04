@@ -7,10 +7,13 @@ output: html_document
 ```{r}
 library(tidyverse)
 library(dplyr)
+library(ggplot2)
+library(broom)
+library(ggpubr)
 ```
 
 ## Problem 1
-
+Load and clean the data for regression analysis (i.e. convert numeric to factor where appropriate, check for missing data, etc.).
 ```{r}
 clean_df <- read.csv("birthweight.csv") 
 clean_df <- janitor::clean_names(clean_df) %>% 
@@ -24,9 +27,13 @@ clean_df <- janitor::clean_names(clean_df) %>%
     mrace = factor(mrace),
     malform = factor(malform)
   )
-
 clean_df
 ```
+
+```{r}
+
+```
+
 
 ## Problem 2
 ```{r}
