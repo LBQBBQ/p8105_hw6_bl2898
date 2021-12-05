@@ -4,6 +4,7 @@ author: "Boqian Li"
 date: "12/3/2021"
 output: html_document
 ---
+
 ```{r}
 library(tidyverse)
 library(dplyr)
@@ -27,9 +28,30 @@ clean_df <- janitor::clean_names(clean_df) %>%
     mrace = factor(mrace),
     malform = factor(malform)
   )
-clean_df
-```
 
+# baby birth weight vs baby’s head circumference at birth
+plot(clean_df$bwt, clean_df$bhead)
+
+# fit SLR
+bwt_bhead = lm(bwt ~ bhead, data = clean_df)
+
+# results using summary()
+summary(bwt_bhead)
+
+# results using broom::tidy()
+tidy(bwt_bhead)
+
+# fit statistics using broom::glance()
+glance(bwt_bhead)
+
+# extract fitted.values
+fitted = bwt_bhead$fitted.values
+
+# plot with regression line (may need to run the lines together)
+plot(clean_df$bwt, clean_df$bhead)
+abline(reg_diab, lwd = 2, col = 2)
+
+```
 
 ## Problem 2
 ```{r}
